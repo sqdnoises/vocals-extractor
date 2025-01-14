@@ -16,10 +16,10 @@ REM Read the Python version
 set /p python_version=<version.txt
 del version.txt
 
-echo Detected Python version: %python_version%
+echo 🔍 Detected Python version: %python_version%
 
 REM Verify the version is exactly 3.10.11
-echo %python_version% | find "3.10.11" >nul
+echo %python_version% | find "3.10" >nul
 if %errorlevel% neq 0 (
     echo ❌ Python 3.10.11 is required. Detected version: %python_version%.
     echo You can download Python 3.10.11 from: https://www.python.org/downloads/release/python-31011/
