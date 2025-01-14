@@ -2,6 +2,8 @@
 
 chcp 65001 >nul
 
+echo ✏️ Starting installation...
+
 REM Check if Python 3.10.11 is available
 py -3.10 --version > version.txt 2>&1
 if %errorlevel% neq 0 (
@@ -35,8 +37,8 @@ if not exist "Music-Source-Separation-Training\" (
         exit /b 3
     )
     echo ✅ Git is available.
-    
-    echo "⏳ Cloning git repository https://github.com/jarredou/Music-Source-Separation-Training (branch: colab-inference)"
+
+    echo ⏳ Cloning git repository https://github.com/jarredou/Music-Source-Separation-Training [branch: colab-inference]
     git clone -b colab-inference https://github.com/jarredou/Music-Source-Separation-Training
     echo ✅ Cloned repository.
 ) else (
@@ -45,20 +47,20 @@ if not exist "Music-Source-Separation-Training\" (
 
 REM Check if the .venv folder exists
 if not exist ".venv\" (
-    echo 🔍 `.venv` folder not found. Creating virtual environment...
+    echo 🔍 .venv folder not found. Creating virtual environment...
     py -3.10 -m venv .venv --upgrade-deps
     if not exist ".venv\Scripts\python.exe" (
         echo ❌ Failed to create the virtual environment.
         exit /b 4
     )
-    echo ✅ Created virtual environment `.venv`.
+    echo ✅ Created virtual environment .venv.
 ) else (
-    echo ✅ `.venv` folder already exists.
+    echo ✅ .venv folder already exists.
 )
 
 REM Install pip requirements
 echo ⏳ Installing dependencies... This will take a few minutes.
-.\.venv\Scripts\python.exe -m pip install -r ".\Music-Source-Separation-Training\requirements.txt"
+.\.venv\Scripts\python.exe -m pip install -r ".\requirements.txt"
 if %errorlevel% neq 0 (
     echo ❌ Failed to install dependencies.
     exit /b 5
@@ -67,3 +69,5 @@ echo ✅ Installed dependencies.
 
 REM Create the necessary folders and ignore errors if they already exist
 mkdir "input" "output" 2>nul
+echo ✅ Created directories: input, output
+echo ✅ Installation complete.
