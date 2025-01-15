@@ -50,9 +50,4 @@ if [[ $? -ne 0 ]]; then
     exit 6
 fi
 echo "✅ Installed dependencies."
-
-# Create the necessary folders
-mkdir -p "output"
-echo "✅ Created directories: output"
-
 echo "✅ Installation complete."
