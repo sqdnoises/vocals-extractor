@@ -9,6 +9,11 @@ export LANG=C.UTF-8
 
 # Check if Python 3.10 is available
 echo "✏️ Starting installation..."
+
+echo "✏️ Installing python3.10, python3.10-pip, python3.10-venv, git..."
+sudo apt install -y python3.10 python3.10-pip python3.10-venv git &> /dev/null
+echo "✅ Installed python3.10, python3.10-pip, python3.10-venv, git."
+
 if ! command -v python3.10 >/dev/null 2>&1; then
     echo "❌ Python 3.10 is not installed or not found. Please install Python 3.10 and try again."
     echo "You can download Python 3.10 from: https://www.python.org/downloads/"
@@ -34,9 +39,7 @@ if [[ ! -d "Music-Source-Separation-Training" ]]; then
         echo "❌ Git is not installed or not in PATH. Please install Git and try again."
         exit 3
     fi
-
     echo "✅ Git is available."
-
     echo "⏳ Cloning git repository https://github.com/jarredou/Music-Source-Separation-Training [branch: colab-inference]"
     git clone -b colab-inference https://github.com/jarredou/Music-Source-Separation-Training
     echo "✅ Cloned repository."
@@ -60,17 +63,15 @@ fi
 # Source the virtual environment
 echo "🔄 Activating virtual environment..."
 source .venv/bin/activate
-
 if [[ ! "$VIRTUAL_ENV" ]]; then
     echo "❌ Failed to activate virtual environment."
     exit 5
 fi
-
 echo "✅ Virtual environment activated."
 
 # Install pip requirements
 echo "⏳ Installing dependencies... This will take a few minutes."
-python3 -m pip install -r "requirements.txt"
+.venv/bin/python3 -m pip install -r "requirements.txt" &> /dev/null
 if [[ $? -ne 0 ]]; then
     echo "❌ Failed to install dependencies."
     deactivate
