@@ -43,18 +43,11 @@ fi
 
 # Install pip requirements
 echo "⏳ Installing dependencies... This will take a few minutes."
-.venv/bin/python3 -m pip install -r "requirements.txt" &> /dev/null
+python3 -m pip install -r "requirements.txt" &> /dev/null
 if [[ $? -ne 0 ]]; then
     echo "❌ Failed to install dependencies."
     deactivate
     exit 6
 fi
 echo "✅ Installed dependencies."
-
-# Create the necessary folders
-mkdir -p "input" "output"
-echo "✅ Created directories: input, output"
-
-# Deactivate the virtual environment
-deactivate
 echo "✅ Installation complete."
