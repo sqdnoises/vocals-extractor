@@ -10,9 +10,9 @@ export LANG=C.UTF-8
 # Check if Python 3.10 is available
 echo "✏️ Starting installation..."
 
-echo "✏️ Installing python3.10, python3.10-pip, python3.10-venv, git..."
-sudo apt install -y python3.10 python3.10-pip python3.10-venv git &> /dev/null
-echo "✅ Installed python3.10, python3.10-pip, python3.10-venv, git."
+echo "✏️ Installing python3, python3-pip, python3-venv, git..."
+sudo apt install -y python3 python3-pip python3-venv git &> /dev/null
+echo "✅ Installed python3, python3-pip, python3-venv, git."
 
 if ! command -v python3.10 >/dev/null 2>&1; then
     echo "❌ Python 3.10 is not installed or not found. Please install Python 3.10 and try again."
