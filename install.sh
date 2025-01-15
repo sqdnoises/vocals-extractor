@@ -10,13 +10,8 @@ export LANG=C.UTF-8
 # Check if Python 3.10 is available
 echo "✏️ Starting installation..."
 
-echo "✏️ Installing python3, python3-pip, python3-venv, git..."
-sudo apt install -y python3 python3-pip python3-venv git &> /dev/null
-echo "✅ Installed python3, python3-pip, python3-venv, git."
-
 if ! command -v python3.10 >/dev/null 2>&1; then
     echo "❌ Python 3.10 is not installed or not found. Please install Python 3.10 and try again."
-    echo "You can download Python 3.10 from: https://www.python.org/downloads/"
     exit 1
 fi
 
@@ -27,7 +22,6 @@ echo "🔍 Detected Python version: $PYTHON_VERSION"
 # Verify the version starts with 3.10
 if [[ ! "$PYTHON_VERSION" =~ ^3\.10\. ]]; then
     echo "❌ Python 3.10.x is required. Detected version: $PYTHON_VERSION."
-    echo "You can download Python 3.10 from: https://www.python.org/downloads/"
     exit 2
 fi
 
@@ -46,28 +40,6 @@ if [[ ! -d "Music-Source-Separation-Training" ]]; then
 else
     echo "✅ Repository folder 'Music-Source-Separation-Training' already exists."
 fi
-
-# Check if the .venv folder exists and create if needed
-if [[ ! -d ".venv" ]]; then
-    echo "🔍 .venv folder not found. Creating virtual environment..."
-    python3.10 -m venv .venv --upgrade-deps
-    if [[ ! -f ".venv/bin/python3" ]]; then
-        echo "❌ Failed to create the virtual environment."
-        exit 4
-    fi
-    echo "✅ Created virtual environment .venv."
-else
-    echo "✅ .venv folder already exists."
-fi
-
-# Source the virtual environment
-echo "🔄 Activating virtual environment..."
-source .venv/bin/activate
-if [[ ! "$VIRTUAL_ENV" ]]; then
-    echo "❌ Failed to activate virtual environment."
-    exit 5
-fi
-echo "✅ Virtual environment activated."
 
 # Install pip requirements
 echo "⏳ Installing dependencies... This will take a few minutes."
