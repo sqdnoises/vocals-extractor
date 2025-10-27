@@ -34,8 +34,8 @@ if [[ ! -d "Music-Source-Separation-Training" ]]; then
         exit 3
     fi
     echo "✅ Git is available."
-    echo "⏳ Cloning git repository https://github.com/jarredou/Music-Source-Separation-Training [branch: colab-inference]"
-    git clone -b colab-inference https://github.com/jarredou/Music-Source-Separation-Training
+    echo "⏳ Cloning git repository https://github.com/ZFTurbo/Music-Source-Separation-Training [branch: colab-inference]"
+    git clone -b colab-inference https://github.com/ZFTurbo/Music-Source-Separation-Training
     echo "✅ Cloned repository."
 else
     echo "✅ Repository folder 'Music-Source-Separation-Training' already exists."
