@@ -43,7 +43,7 @@ fi
 
 # Install pip requirements
 echo "⏳ Installing dependencies... This will take a few minutes."
-python3 -m pip install -r "requirements.txt" &> /dev/null
+python3 -m pip install -r "requirements.txt"
 if [[ $? -ne 0 ]]; then
     echo "❌ Failed to install dependencies."
     deactivate
